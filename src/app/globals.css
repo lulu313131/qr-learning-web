@@ -35,7 +35,7 @@ body {
 
 body {
   margin: 0;
-  padding: 40px;
+  padding: 0;
   min-height: 100vh;
   background:
     radial-gradient(ellipse at 80% 10%, #7dd3f8 0%, transparent 50%),
@@ -238,4 +238,36 @@ body {
 
 .animate-fade-in {
   animation: fade-in 200ms ease forwards;
+}
+
+@media (min-width: 769px) {
+  body {
+    padding: 40px;
+  }
+}
+
+.dept-tree-scroll {
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dept-tree-scroll:active {
+  cursor: grabbing;
+}
+
+@media (min-width: 769px) {
+  .dept-tree-scroll {
+    cursor: default;
+  }
+
+  .dept-tree-scroll:active {
+    cursor: default;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-tree-node.glass-node,
+  .mobile-tree-node.glass-node-highlight {
+    padding: 8px 12px;
+  }
 }

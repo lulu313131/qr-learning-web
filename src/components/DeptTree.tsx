@@ -6,6 +6,8 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  type MouseEvent,
+  type TouchEvent,
 } from "react";
 
 import {
@@ -178,7 +180,50 @@ export default function DeptTree({
   const [svgSize, setSvgSize] = useState({ width: 0, height: 0 });
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Partial<Record<DeptNodeKey, HTMLButtonElement>>>({});
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+
+  const endDrag = useCallback(() => {
+    isDragging.current = false;
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = "";
+    }
+  }, []);
+
+  const handleMouseDown = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || window.matchMedia("(min-width: 769px)").matches) return;
+    isDragging.current = true;
+    dragStartX.current = e.pageX;
+    dragScrollLeft.current = el.scrollLeft;
+    el.style.cursor = "grabbing";
+  }, []);
+
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || !isDragging.current) return;
+    e.preventDefault();
+    const walk = e.pageX - dragStartX.current;
+    el.scrollLeft = dragScrollLeft.current - walk;
+  }, []);
+
+  const handleTouchStart = useCallback((e: TouchEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || window.matchMedia("(min-width: 769px)").matches) return;
+    isDragging.current = true;
+    dragStartX.current = e.touches[0].pageX;
+    dragScrollLeft.current = el.scrollLeft;
+  }, []);
+
+  const handleTouchMove = useCallback((e: TouchEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || !isDragging.current) return;
+    const walk = e.touches[0].pageX - dragStartX.current;
+    el.scrollLeft = dragScrollLeft.current - walk;
+  }, []);
 
   const setNodeRef = useCallback(
     (key: DeptNodeKey) => (el: HTMLButtonElement | null) => {
@@ -306,10 +351,21 @@ export default function DeptTree({
   };
 
   return (
-    <div className="dept-tree-wrapper box-border flex w-full max-w-full flex-col items-center justify-start overflow-x-hidden px-5 py-10">
+    <div className="dept-tree-wrapper box-border flex w-full max-w-full flex-col items-center justify-start overflow-x-hidden px-2 py-6 md:px-5 md:py-10">
+      <div
+        ref={scrollRef}
+        className="dept-tree-scroll w-full max-w-full overflow-x-auto md:overflow-x-hidden"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={endDrag}
+        onMouseLeave={endDrag}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={endDrag}
+      >
       <div
         ref={containerRef}
-        className="relative box-border flex w-full max-w-full flex-col items-center overflow-x-hidden"
+        className="relative box-border flex w-full min-w-max max-w-full flex-col items-center md:min-w-0 md:overflow-x-hidden"
       >
         {svgSize.width > 0 && svgSize.height > 0 && (
           <svg
@@ -370,6 +426,7 @@ export default function DeptTree({
             </div>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

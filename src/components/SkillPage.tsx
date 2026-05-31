@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   BADGE_OPTIONAL_CLASS,
@@ -89,6 +89,8 @@ export default function SkillPage({
   deptData,
 }: SkillPageProps) {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const [mobileRightOpen, setMobileRightOpen] = useState(false);
+  const rightPanelRef = useRef<HTMLDivElement>(null);
 
   const categoryCourses = useMemo(
     () => courses.filter((c) => c.skillCategory === category),
@@ -130,9 +132,35 @@ export default function SkillPage({
     return { keyword, relatedCourses, plansWithPeople };
   }, [selectedCourse, mappings, deptData]);
 
+  const handleSelectCourse = (name: string) => {
+    setSelectedCourse(name);
+    setMobileRightOpen(true);
+  };
+
+  useEffect(() => {
+    if (!mobileRightOpen || !relatedInfo) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (!isMobile) return;
+
+    const timer = window.setTimeout(() => {
+      rightPanelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+
+    return () => window.clearTimeout(timer);
+  }, [mobileRightOpen, relatedInfo, selectedCourse]);
+
+  useEffect(() => {
+    if (!relatedInfo) {
+      setMobileRightOpen(false);
+    }
+  }, [relatedInfo]);
+
+  const showMobileRight = mobileRightOpen && relatedInfo;
+
   return (
-    <div className="flex min-h-[480px] gap-0">
-      <div className="w-1/2 shrink-0 border-r border-[rgba(255,255,255,0.4)] pr-6">
+    <div className="flex min-h-[480px] flex-col gap-6 md:flex-row md:gap-0">
+      <div className="w-full shrink-0 border-b border-[rgba(255,255,255,0.4)] pb-6 md:w-1/2 md:border-r md:border-b-0 md:pr-6 md:pb-0">
         <h2 className="border-b border-[rgba(255,255,255,0.4)] pb-3 text-[22px] font-bold text-[var(--color-text-main)]">
           {category} 課程列表
         </h2>
@@ -143,7 +171,7 @@ export default function SkillPage({
             barColor="var(--color-primary)"
             items={requiredCourses}
             selectedCourse={selectedCourse}
-            onSelect={setSelectedCourse}
+            onSelect={handleSelectCourse}
           />
           <CourseSection
             title="選修"
@@ -151,20 +179,25 @@ export default function SkillPage({
             barColor="var(--color-success)"
             items={electiveCourses}
             selectedCourse={selectedCourse}
-            onSelect={setSelectedCourse}
+            onSelect={handleSelectCourse}
           />
         </div>
       </div>
 
-      <div className="flex w-1/2 flex-col pl-6">
+      <div
+        ref={rightPanelRef}
+        className={`w-full flex-col md:flex md:w-1/2 md:pl-6 ${
+          showMobileRight ? "flex" : "hidden md:flex"
+        }`}
+      >
         {!relatedInfo ? (
-          <p className="flex flex-1 items-center justify-center text-center text-sm text-[var(--color-text-secondary)]">
+          <p className="hidden flex-1 items-center justify-center text-center text-sm text-[var(--color-text-secondary)] md:flex">
             點擊左側課程名稱，串聯相關計畫
           </p>
         ) : (
           <div className="space-y-6">
             <div>
-              <h3 className="text-[48px] font-bold text-[var(--color-primary)]">
+              <h3 className="text-[32px] font-bold text-[var(--color-primary)] md:text-[48px]">
                 {relatedInfo.keyword}
               </h3>
               <div className="mt-3 border-b border-[rgba(255,255,255,0.4)]" />

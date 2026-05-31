@@ -1,18 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type SearchBarProps = {
   onSearch: (query: string) => void;
   onClear: () => void;
+  autoFocus?: boolean;
+  onClose?: () => void;
+  className?: string;
 };
 
-export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
+export default function SearchBar({
+  onSearch,
+  onClear,
+  autoFocus = false,
+  onClose,
+  className = "",
+}: SearchBarProps) {
   const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (autoFocus) {
+      inputRef.current?.focus();
+    }
+  }, [autoFocus]);
 
   const handleSearch = () => {
     const trimmed = value.trim();
-    if (trimmed) onSearch(trimmed);
+    if (trimmed) {
+      onSearch(trimmed);
+      onClose?.();
+    }
   };
 
   const handleClear = () => {
@@ -21,7 +40,7 @@ export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
   };
 
   return (
-    <div className="relative flex min-w-0 flex-1 items-center">
+    <div className={`relative flex min-w-0 flex-1 items-center ${className}`}>
       <button
         type="button"
         onClick={handleSearch}
@@ -43,22 +62,30 @@ export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
       </button>
 
       <input
+        ref={inputRef}
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") handleSearch();
+          if (e.key === "Escape") onClose?.();
         }}
         placeholder="搜尋人名或關鍵字..."
         className="transition-interactive h-10 w-full rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.8)] bg-[rgba(255,255,255,0.6)] py-0 pr-9 pl-[38px] text-base text-[var(--color-text-main)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-primary)] focus:shadow-[var(--shadow-focus)] focus:outline-none"
       />
 
-      {value && (
+      {(value || onClose) && (
         <button
           type="button"
-          onClick={handleClear}
+          onClick={() => {
+            if (value) {
+              handleClear();
+            } else {
+              onClose?.();
+            }
+          }}
           className="transition-interactive absolute right-3.5 flex h-5 w-5 items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]"
-          aria-label="清除搜尋"
+          aria-label={value ? "清除搜尋" : "關閉搜尋"}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

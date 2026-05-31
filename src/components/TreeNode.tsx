@@ -25,14 +25,14 @@ const TreeNode = forwardRef<HTMLButtonElement, TreeNodeProps>(function TreeNode(
       ref={ref}
       type="button"
       onClick={hasChildren ? onToggle : undefined}
-      className={`flex w-[140px] shrink-0 items-center justify-center gap-2 ${
+      className={`flex w-[110px] shrink-0 items-center justify-center gap-1 px-3 py-2 md:w-[140px] md:gap-2 md:px-5 md:py-2.5 ${
         isHighlighted ? "glass-node-highlight" : "glass-node"
-      } ${hasChildren ? "cursor-pointer" : "cursor-default"}`}
+      } ${hasChildren ? "cursor-pointer" : "cursor-default"} mobile-tree-node`}
     >
-      <span className="text-xl" aria-hidden>
+      <span className="text-lg md:text-xl" aria-hidden>
         {emoji}
       </span>
-      <span className="truncate text-base font-semibold text-[var(--color-text-main)]">
+      <span className="truncate text-sm font-semibold text-[var(--color-text-main)] md:text-base">
         {name}
       </span>
       {hasChildren && (

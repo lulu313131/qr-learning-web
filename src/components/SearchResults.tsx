@@ -27,11 +27,11 @@ export default function SearchResults({
 
   return (
     <div>
-      <h2 className="text-[26px] font-bold text-[var(--color-text-main)]">
+      <h2 className="text-xl font-bold text-[var(--color-text-main)] md:text-[26px]">
         「<span className="text-[var(--color-primary)]">{query}</span>」的搜尋結果
       </h2>
 
-      <div className="mt-8 space-y-8">
+      <div className="mt-6 space-y-6 md:mt-8 md:space-y-8">
         {hasCourses && (
           <section>
             <h3 className="mb-3 border-b border-[rgba(255,255,255,0.4)] pb-1.5 text-[15px] font-semibold text-[var(--color-text-secondary)]">

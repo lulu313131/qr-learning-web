@@ -15,7 +15,7 @@ export default function TabBar({
   onTabChange,
 }: TabBarProps) {
   return (
-    <nav className="flex flex-wrap gap-2.5">
+    <nav className="hidden flex-wrap gap-2.5 md:flex">
       {TABS.map((tab) => {
         const selected = highlightTab && activeTab === tab.id;
         return (
