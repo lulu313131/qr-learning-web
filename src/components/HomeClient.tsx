@@ -110,7 +110,7 @@ export default function HomeClient({
     switch (activeTab) {
       case "boss":
         return (
-          <div key="boss" className="animate-fade-in">
+          <div key="boss" className="animate-fade-in h-full min-h-[360px]">
             <BossExpectations />
           </div>
         );
