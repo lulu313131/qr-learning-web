@@ -16,7 +16,7 @@ export default function Sidebar({
   const categories: SkillCategoryKey[] = ["Q", "R", "A", "M"];
 
   return (
-    <aside className="glass-card flex w-[240px] shrink-0 flex-col gap-6 px-4 py-6">
+    <aside className="glass-card flex h-auto w-[240px] shrink-0 flex-col gap-6 self-stretch px-4 py-6">
       <div className="glass-card-inner p-3">
         <Image
           src="/mascot.jpg"
