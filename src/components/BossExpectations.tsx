@@ -9,14 +9,7 @@ export default function BossExpectations() {
           alt="團隊照片"
           width={600}
           height={400}
-          className="block w-full rounded-2xl object-cover md:w-[70%] md:rounded-[20px]"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "cover",
-            borderRadius: "16px",
-            display: "block",
-          }}
+          className="block h-auto w-full rounded-2xl object-cover md:w-[70%] md:rounded-[20px]"
         />
       </div>
 
