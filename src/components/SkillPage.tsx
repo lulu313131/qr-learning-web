@@ -159,8 +159,8 @@ export default function SkillPage({
   const showMobileRight = mobileRightOpen && relatedInfo;
 
   return (
-    <div className="flex min-h-[480px] flex-col gap-6 md:flex-row md:gap-0">
-      <div className="w-full shrink-0 border-b border-[rgba(255,255,255,0.4)] pb-6 md:w-1/2 md:border-r md:border-b-0 md:pr-6 md:pb-0">
+    <div className="flex flex-col gap-6 md:flex-row">
+      <div className="w-full md:w-1/2 md:border-r md:border-[rgba(255,255,255,0.4)] md:pr-6">
         <h2 className="border-b border-[rgba(255,255,255,0.4)] pb-3 text-[22px] font-bold text-[var(--color-text-main)]">
           {category} 課程列表
         </h2>
@@ -186,12 +186,12 @@ export default function SkillPage({
 
       <div
         ref={rightPanelRef}
-        className={`w-full flex-col md:flex md:w-1/2 md:pl-6 ${
-          showMobileRight ? "flex" : "hidden md:flex"
+        className={`w-full md:w-1/2 md:pl-6 ${
+          showMobileRight ? "block" : "hidden md:block"
         }`}
       >
         {!relatedInfo ? (
-          <p className="hidden flex-1 items-center justify-center text-center text-sm text-[var(--color-text-secondary)] md:flex">
+          <p className="hidden text-center text-sm text-[var(--color-text-secondary)] md:block md:py-16">
             點擊左側課程名稱，串聯相關計畫
           </p>
         ) : (

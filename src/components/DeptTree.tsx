@@ -24,6 +24,7 @@ type DeptTreeProps = {
   mappings: SkillMapping[];
   courses: Course[];
   highlightName?: string | null;
+  mobileTitle?: string;
 };
 
 const NODE_META: Record<
@@ -172,6 +173,7 @@ export default function DeptTree({
   mappings,
   courses,
   highlightName = null,
+  mobileTitle,
 }: DeptTreeProps) {
   const [expanded, setExpanded] =
     useState<Record<DeptNodeKey, boolean>>(INITIAL_EXPANDED);
@@ -351,7 +353,14 @@ export default function DeptTree({
   };
 
   return (
-    <div className="dept-tree-wrapper box-border flex w-full max-w-full flex-col items-center justify-start overflow-x-hidden px-2 py-6 md:px-5 md:py-10">
+    <div>
+      {mobileTitle && (
+        <h2 className="mb-3 block border-b border-[rgba(0,118,203,0.15)] pb-3 text-lg font-bold text-[#0076CB] md:hidden">
+          {mobileTitle}
+        </h2>
+      )}
+
+      <div className="dept-tree-wrapper box-border flex w-full max-w-full flex-col items-center justify-start overflow-x-hidden px-2 py-6 md:px-5 md:py-10">
       <div
         ref={scrollRef}
         className="dept-tree-scroll w-full max-w-full overflow-x-auto md:overflow-x-hidden"
@@ -428,6 +437,7 @@ export default function DeptTree({
         </div>
       </div>
       </div>
+    </div>
     </div>
   );
 }
