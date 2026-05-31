@@ -41,13 +41,13 @@ export default function PlanCourses({
 
   return (
     <AccordionPanel open={isOpen} openDuration={200} closeDuration={150}>
-      <div className="glass-card mt-2 w-full rounded-lg px-3.5 py-2.5">
+      <div className="glass-card mt-2 w-full px-3.5 py-2.5">
         {matchedCourses.length === 0 ? (
-          <p className="py-2 text-center text-sm text-[var(--text-muted)]">
+          <p className="py-2 text-center text-sm text-[var(--color-text-secondary)]">
             尚無對應課程
           </p>
         ) : (
-          <ul className="divide-y divide-[rgba(180,210,240,0.4)]">
+          <ul className="divide-y divide-[rgba(255,255,255,0.4)]">
             {matchedCourses.map((course) => {
               const detailOpen = openCourseName === course.courseName;
               const isRequired = course.type === "必修";
@@ -58,13 +58,13 @@ export default function PlanCourses({
                     <button
                       type="button"
                       onClick={() => toggleCourse(course.courseName)}
-                      className="flex min-w-0 flex-1 items-center gap-2 text-left text-[15px] font-medium text-[var(--text-primary)] transition-all duration-150 ease-in-out hover:text-[var(--accent)]"
+                      className="transition-interactive flex min-w-0 flex-1 items-center gap-2 text-left text-[15px] font-medium text-[var(--color-text-main)] hover:text-[var(--color-primary)]"
                     >
                       <span className="shrink-0" aria-hidden>
                         📘
                       </span>
                       <span>{course.courseName}</span>
-                      <span className="shrink-0 text-xs text-[var(--text-muted)]">
+                      <span className="shrink-0 text-xs text-[var(--color-text-secondary)]">
                         {detailOpen ? "▼" : "▶"}
                       </span>
                     </button>
@@ -73,7 +73,7 @@ export default function PlanCourses({
                         href={course.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shrink-0 text-sm font-medium text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                        className="transition-interactive shrink-0 text-sm font-medium text-[var(--color-primary)] hover:underline"
                         onClick={(e) => e.stopPropagation()}
                       >
                         前往課程 →
@@ -86,7 +86,7 @@ export default function PlanCourses({
                     openDuration={200}
                     closeDuration={150}
                   >
-                    <div className="glass-card mt-2 space-y-2 rounded-lg px-3.5 py-2.5">
+                    <div className="glass-card mt-2 space-y-2 px-3.5 py-2.5">
                       <div className="flex flex-wrap gap-2">
                         <span className={getCategoryBadgeClass(course.skillCategory)}>
                           {course.skillCategory}
@@ -94,8 +94,8 @@ export default function PlanCourses({
                         <span
                           className={
                             isRequired
-                              ? BADGE_REQUIRED_CLASS + " text-xs"
-                              : BADGE_OPTIONAL_CLASS + " text-xs"
+                              ? `${BADGE_REQUIRED_CLASS} text-xs`
+                              : `${BADGE_OPTIONAL_CLASS} text-xs`
                           }
                         >
                           {course.type}

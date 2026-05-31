@@ -23,32 +23,20 @@ export default function TreeNode({
     <button
       type="button"
       onClick={hasChildren ? onToggle : undefined}
-      className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 rounded-xl border px-5 py-2.5 transition-all duration-150 ease-in-out ${
-        isHighlighted
-          ? "border-[var(--accent)] bg-[var(--highlight-node)]"
-          : "border-[#C8DDEF] bg-[rgba(255,255,255,0.9)]"
-      } ${
-        hasChildren
-          ? "cursor-pointer hover:border-[#4A90D9] hover:shadow-[var(--shadow-node-hover)]"
-          : "cursor-default"
-      }`}
-      style={{
-        left,
-        top,
-        boxShadow: isHighlighted
-          ? "var(--shadow-node-hover)"
-          : "var(--shadow-node)",
-      }}
+      className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 px-5 py-2.5 ${
+        isHighlighted ? "glass-node-highlight" : "glass-node"
+      } ${hasChildren ? "cursor-pointer" : "cursor-default"}`}
+      style={{ left, top }}
     >
       <span className="text-xl" aria-hidden>
         {emoji}
       </span>
-      <span className="truncate text-base font-semibold text-[var(--text-primary)]">
+      <span className="truncate text-base font-semibold text-[var(--color-text-main)]">
         {name}
       </span>
       {hasChildren && (
         <span
-          className="shrink-0 text-xs text-[var(--text-secondary)]"
+          className="shrink-0 text-xs text-[var(--color-text-secondary)]"
           aria-hidden
         >
           {expanded ? "▲" : "▼"}

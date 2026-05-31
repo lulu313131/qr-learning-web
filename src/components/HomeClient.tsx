@@ -152,38 +152,32 @@ export default function HomeClient({
   };
 
   return (
-    <div className="flex min-h-screen bg-transparent">
+    <div className="flex min-h-screen">
       <Sidebar
         activeCategory={activeSkill}
         onCategoryClick={handleCategoryClick}
       />
 
       <div className="flex min-h-screen flex-1 flex-col">
-        <header className="glass-header flex h-14 items-center px-6">
-          <div className="flex w-full items-center">
-            <div className="flex shrink-0 items-center gap-3">
-              <span
-                className="h-7 w-1 rounded-[2px] bg-[var(--accent)]"
-                aria-hidden
-              />
-              <h1 className="text-2xl font-bold text-[var(--accent)]">
-                部門學習網
-              </h1>
-            </div>
+        <header className="glass-header flex h-[70px] items-center px-8">
+          <div className="flex w-full items-center gap-6">
+            <h1 className="shrink-0 text-[22px] font-semibold tracking-[-0.01em] text-[var(--color-text-main)]">
+              部門學習網
+            </h1>
             <SearchBar onSearch={handleSearch} onClear={handleSearchClear} />
             <VisitCounter />
           </div>
         </header>
 
-        <main className="flex flex-1 flex-col overflow-hidden bg-transparent">
+        <main className="flex flex-1 flex-col overflow-hidden">
           <TabBar
             activeTab={activeTab}
             highlightTab={activeSkill === null && searchMode === null}
             onTabChange={handleTabChange}
           />
 
-          <div className="min-h-[calc(100vh-56px-48px)] flex-1 overflow-y-auto bg-transparent px-10 py-8">
-            {renderMainContent()}
+          <div className="min-h-[calc(100vh-70px-64px)] flex-1 overflow-y-auto">
+            <div className="content-panel mx-6 mb-6">{renderMainContent()}</div>
           </div>
         </main>
       </div>

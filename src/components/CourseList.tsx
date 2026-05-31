@@ -14,7 +14,7 @@ export default function CourseList({ category, courses }: CourseListProps) {
 
   return (
     <div>
-      <h2 className="mb-6 text-2xl font-bold text-[var(--text-primary)]">
+      <h2 className="mb-6 text-2xl font-bold text-[var(--color-text-main)]">
         {category} 技能課程
       </h2>
       <div className="grid gap-4 sm:grid-cols-2">
@@ -23,9 +23,9 @@ export default function CourseList({ category, courses }: CourseListProps) {
           return (
             <article
               key={`${course.skillCategory}-${course.courseName}`}
-              className="glass-card flex flex-col p-5 transition-all duration-150 ease-in-out hover:border-[#4A90D9]/40"
+              className="glass-card transition-interactive flex flex-col p-5 hover:bg-[rgba(255,255,255,0.85)]"
             >
-              <h3 className="mb-3 text-base font-medium text-[var(--text-primary)]">
+              <h3 className="mb-3 text-base font-medium text-[var(--color-text-main)]">
                 {course.courseName}
               </h3>
               <span
@@ -39,7 +39,7 @@ export default function CourseList({ category, courses }: CourseListProps) {
                 href={course.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1 pt-4 text-[13px] text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                className="transition-interactive mt-auto inline-flex items-center gap-1 pt-4 text-[13px] text-[var(--color-primary)] hover:underline"
               >
                 前往課程 →
               </a>
@@ -48,7 +48,9 @@ export default function CourseList({ category, courses }: CourseListProps) {
         })}
       </div>
       {filtered.length === 0 && (
-        <p className="text-sm text-[var(--text-muted)]">此大類尚無課程資料。</p>
+        <p className="text-sm text-[var(--color-text-secondary)]">
+          此大類尚無課程資料。
+        </p>
       )}
     </div>
   );

@@ -55,14 +55,12 @@ function CourseSection({
           return (
             <li
               key={course.courseName}
-              className={`glass-card rounded-[10px] px-4 py-3 transition-all duration-150 ease-in-out ${
-                selected ? "border-[#4A90D9] !bg-[rgba(235,244,255,0.95)]" : ""
-              }`}
+              className={`course-item ${selected ? "course-item-selected" : ""}`}
             >
               <button
                 type="button"
                 onClick={() => onSelect(course.courseName)}
-                className="text-left text-base font-medium text-[var(--text-primary)] transition-all duration-150 ease-in-out hover:text-[var(--accent)]"
+                className="transition-interactive text-left text-base font-medium text-[var(--color-text-main)] hover:text-[var(--color-primary)]"
               >
                 {course.courseName}
               </button>
@@ -71,7 +69,7 @@ function CourseSection({
                   href={course.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex text-[13px] text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                  className="transition-interactive mt-2 inline-flex text-[13px] text-[var(--color-primary)] hover:underline"
                 >
                   前往課程 →
                 </a>
@@ -133,16 +131,16 @@ export default function SkillPage({
   }, [selectedCourse, mappings, deptData]);
 
   return (
-    <div className="glass-card flex min-h-[480px] gap-0 p-6">
-      <div className="w-1/2 shrink-0 border-r border-[rgba(180,210,240,0.4)] pr-6">
-        <h2 className="border-b border-[rgba(180,210,240,0.4)] pb-3 text-[22px] font-bold text-[var(--text-primary)]">
+    <div className="flex min-h-[480px] gap-0">
+      <div className="w-1/2 shrink-0 border-r border-[rgba(255,255,255,0.4)] pr-6">
+        <h2 className="border-b border-[rgba(255,255,255,0.4)] pb-3 text-[22px] font-bold text-[var(--color-text-main)]">
           {category} 課程列表
         </h2>
         <div className="mt-6 space-y-8">
           <CourseSection
             title="必修"
             labelClass={BADGE_REQUIRED_CLASS}
-            barColor="#4A90D9"
+            barColor="var(--color-primary)"
             items={requiredCourses}
             selectedCourse={selectedCourse}
             onSelect={setSelectedCourse}
@@ -150,7 +148,7 @@ export default function SkillPage({
           <CourseSection
             title="選修"
             labelClass={BADGE_OPTIONAL_CLASS}
-            barColor="#2C9EA3"
+            barColor="var(--color-success)"
             items={electiveCourses}
             selectedCourse={selectedCourse}
             onSelect={setSelectedCourse}
@@ -160,20 +158,20 @@ export default function SkillPage({
 
       <div className="flex w-1/2 flex-col pl-6">
         {!relatedInfo ? (
-          <p className="flex flex-1 items-center justify-center text-center text-sm text-[var(--text-muted)]">
+          <p className="flex flex-1 items-center justify-center text-center text-sm text-[var(--color-text-secondary)]">
             點擊左側課程名稱，串聯相關計畫
           </p>
         ) : (
           <div className="space-y-6">
             <div>
-              <h3 className="text-[48px] font-bold text-[var(--accent)]">
+              <h3 className="text-[48px] font-bold text-[var(--color-primary)]">
                 {relatedInfo.keyword}
               </h3>
-              <div className="mt-3 border-b border-[rgba(180,210,240,0.4)]" />
+              <div className="mt-3 border-b border-[rgba(255,255,255,0.4)]" />
             </div>
 
             <section>
-              <p className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+              <p className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
                 課程：
               </p>
               <ul className="space-y-2">
@@ -184,8 +182,8 @@ export default function SkillPage({
                       key={name}
                       className="flex items-center justify-between gap-3"
                     >
-                      <span className="flex items-center gap-2 text-base text-[var(--text-primary)]">
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                      <span className="flex items-center gap-2 text-base text-[var(--color-text-main)]">
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
                         {name}
                       </span>
                       {url && (
@@ -193,7 +191,7 @@ export default function SkillPage({
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 text-[13px] text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                          className="transition-interactive shrink-0 text-[13px] text-[var(--color-primary)] hover:underline"
                         >
                           前往課程 →
                         </a>
@@ -205,16 +203,16 @@ export default function SkillPage({
             </section>
 
             <section>
-              <p className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+              <p className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
                 相關計畫：
               </p>
               <ul className="space-y-2">
                 {relatedInfo.plansWithPeople.map(({ plan, people }) => (
                   <li
                     key={plan}
-                    className="flex items-start gap-2 text-base text-[var(--text-primary)]"
+                    className="flex items-start gap-2 text-base text-[var(--color-text-main)]"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
                     <span>
                       {plan} → {people.length > 0 ? people.join("、") : "—"}
                     </span>

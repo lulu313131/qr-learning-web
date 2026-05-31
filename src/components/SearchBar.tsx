@@ -21,11 +21,11 @@ export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
   };
 
   return (
-    <div className="relative mx-6 flex min-w-0 flex-1 items-center">
+    <div className="relative flex min-w-0 flex-1 items-center">
       <button
         type="button"
         onClick={handleSearch}
-        className="absolute left-3 flex h-5 w-5 items-center justify-center text-[var(--text-muted)] transition-all duration-150 ease-in-out hover:text-[var(--accent)]"
+        className="transition-interactive absolute left-3.5 flex h-5 w-5 items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]"
         aria-label="搜尋"
       >
         <svg
@@ -50,17 +50,24 @@ export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
           if (e.key === "Enter") handleSearch();
         }}
         placeholder="搜尋人名或關鍵字..."
-        className="h-[38px] w-full rounded-full border border-[#C8DDEF] bg-[rgba(255,255,255,0.9)] py-2 pr-9 pl-9 text-base text-[var(--text-primary)] placeholder:text-[15px] placeholder:text-[var(--text-muted)] transition-all duration-150 ease-in-out focus:border-[#4A90D9] focus:shadow-[0_0_0_3px_rgba(74,144,217,0.15)] focus:outline-none"
+        className="transition-interactive h-10 w-full rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.8)] py-0 pr-9 pl-[38px] text-base text-[var(--color-text-main)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-primary)] focus:shadow-[var(--shadow-focus)] focus:outline-none"
       />
 
       {value && (
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-3 flex h-5 w-5 items-center justify-center text-[var(--text-muted)] transition-all duration-150 ease-in-out hover:text-[var(--accent)]"
+          className="transition-interactive absolute right-3.5 flex h-5 w-5 items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]"
           aria-label="清除搜尋"
         >
-          ✕
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="h-4 w-4"
+          >
+            <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+          </svg>
         </button>
       )}
     </div>

@@ -16,12 +16,12 @@ export default function Sidebar({
   const categories: SkillCategoryKey[] = ["Q", "R", "A", "M"];
 
   return (
-    <aside className="glass-sidebar flex w-[220px] shrink-0 flex-col">
+    <aside className="glass-sidebar flex w-[280px] shrink-0 flex-col">
       <div
-        className="m-4 rounded-2xl p-3"
+        className="m-4 rounded-2xl p-3 transition-interactive"
         style={{
-          background: "rgba(235,244,255,0.7)",
-          backdropFilter: "blur(6px)",
+          background: "rgba(255,255,255,0.5)",
+          border: "var(--glass-border)",
         }}
       >
         <Image
@@ -35,10 +35,10 @@ export default function Sidebar({
       </div>
 
       <div>
-        <h2 className="mx-4 mb-2 text-[11px] font-medium tracking-[0.12em] text-[var(--text-muted)] uppercase">
+        <h2 className="mx-4 mb-2 text-[11px] font-medium tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
           技能大類
         </h2>
-        <div className="flex flex-col">
+        <div className="flex flex-col px-4">
           {categories.map((cat) => {
             const selected = activeCategory === cat;
             return (
@@ -46,16 +46,12 @@ export default function Sidebar({
                 key={cat}
                 type="button"
                 onClick={() => onCategoryClick(cat)}
-                className={`mx-4 my-1 h-11 w-[calc(100%-32px)] rounded-[10px] border text-base transition-all duration-150 ease-in-out ${
+                className={`transition-interactive my-0.5 flex h-11 items-center justify-center rounded-[var(--radius-md)] text-base ${
                   selected
-                    ? "border-[#4A90D9] bg-[#4A90D9] font-bold text-white"
-                    : "border-[#C8DDEF] bg-white font-semibold text-[#4A7FA5] hover:bg-[#EBF4FF]"
+                    ? "border border-[rgba(0,118,203,0.3)] bg-[rgba(255,255,255,0.6)] font-bold text-[var(--color-primary)]"
+                    : "border border-transparent bg-transparent font-normal text-[var(--color-text-secondary)] hover:cursor-pointer hover:bg-[rgba(0,0,0,0.05)]"
                 }`}
-                style={
-                  selected
-                    ? { boxShadow: "var(--shadow-btn-selected)" }
-                    : undefined
-                }
+                style={selected ? { boxShadow: "var(--shadow-focus)" } : undefined}
               >
                 {cat}
               </button>

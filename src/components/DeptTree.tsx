@@ -167,14 +167,12 @@ function PlanCard({
 }) {
   return (
     <div
-      className={`absolute max-w-[400px] min-w-[280px] w-max rounded-xl border p-4 ${
-        highlighted
-          ? "border-[var(--accent)] bg-[var(--highlight-node)]"
-          : "border-[#BDD9F5] bg-[rgba(235,244,255,0.9)]"
+      className={`glass-plan-card absolute max-w-[400px] min-w-[280px] w-max p-4 ${
+        highlighted ? "glass-node-highlight" : ""
       }`}
-      style={{ left, top, boxShadow: "var(--shadow-card)" }}
+      style={{ left, top }}
     >
-      <h4 className="border-b border-[var(--border)] pb-3 text-[15px] font-bold text-[var(--accent)]">
+      <h4 className="border-b border-[rgba(255,255,255,0.4)] pb-3 text-[15px] font-bold text-[var(--color-primary)]">
         {emoji} {name} 的相關計畫
       </h4>
       <ul className="mt-3 space-y-2">
@@ -185,14 +183,14 @@ function PlanCard({
               <button
                 type="button"
                 onClick={() => onPlanToggle(plan)}
-                className="group flex w-full items-center justify-between gap-2 text-left text-[15px] text-[var(--text-primary)] transition-all duration-150 ease-in-out hover:text-[var(--accent)]"
+                className="transition-interactive group flex w-full items-center justify-between gap-2 text-left text-[15px] text-[var(--color-text-main)] hover:text-[var(--color-primary)]"
               >
                 <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
                   <span className="group-hover:underline">{plan}</span>
                 </span>
                 <span
-                  className="shrink-0 text-xs text-[var(--text-muted)]"
+                  className="shrink-0 text-xs text-[var(--color-text-secondary)]"
                   aria-hidden
                 >
                   {isOpen ? "▼" : "▶"}
@@ -275,8 +273,8 @@ export default function DeptTree({
             <path
               key={`${d}-${index}`}
               d={d}
-              stroke="#B8D4E8"
-              strokeWidth={2}
+              stroke="rgba(0,118,203,0.25)"
+              strokeWidth={1.5}
               fill="none"
             />
           ))}
