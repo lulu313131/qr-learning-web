@@ -16,8 +16,11 @@ export default function Sidebar({
   const categories: SkillCategoryKey[] = ["Q", "R", "A", "M"];
 
   return (
-    <aside className="flex w-[220px] shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-surface)]">
-      <div className="m-4 rounded-xl bg-[var(--bg-card)] p-3">
+    <aside
+      className="flex w-[220px] shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-surface)]"
+      style={{ boxShadow: "2px 0 8px rgba(74,144,217,0.06)" }}
+    >
+      <div className="m-4 rounded-2xl bg-[var(--bg-accent-soft)] p-3">
         <Image
           src="/mascot.jpg"
           alt="Q兔吉祥物"
@@ -29,7 +32,7 @@ export default function Sidebar({
       </div>
 
       <div>
-        <h2 className="mx-4 mb-2 text-[13px] font-medium tracking-[0.15em] text-[var(--text-muted)] uppercase">
+        <h2 className="mx-4 mb-2 text-[11px] font-medium tracking-[0.12em] text-[var(--text-muted)] uppercase">
           技能大類
         </h2>
         <div className="flex flex-col">
@@ -40,11 +43,12 @@ export default function Sidebar({
                 key={cat}
                 type="button"
                 onClick={() => onCategoryClick(cat)}
-                className={`mx-4 my-1 h-11 w-[calc(100%-32px)] rounded-lg border text-[18px] transition-all duration-150 ease-in-out hover:scale-[1.01] ${
+                className={`mx-4 my-1 h-11 w-[calc(100%-32px)] rounded-xl border text-base transition-all duration-150 ease-in-out ${
                   selected
-                    ? "border-[var(--accent)] bg-[var(--accent-glow)] font-bold text-[var(--accent)]"
-                    : "border-[var(--border)] bg-[var(--bg-card)] font-semibold text-[var(--text-secondary)] hover:border-[var(--border-strong)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)]"
+                    ? "border-[var(--accent)] bg-[var(--accent)] font-bold text-white"
+                    : "border-[var(--border)] bg-[var(--bg-accent-soft)] font-semibold text-[var(--text-secondary)] hover:border-[var(--accent)] hover:bg-[#D6EEFF] hover:text-[var(--accent)]"
                 }`}
+                style={selected ? { boxShadow: "var(--shadow-sm)" } : undefined}
               >
                 {cat}
               </button>

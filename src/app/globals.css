@@ -3,30 +3,37 @@
 
 :root {
   /* 背景層次 */
-  --bg-base: #1d3752;
-  --bg-surface: #182e45;
-  --bg-card: #214d72;
-  --bg-card-hover: #2c7695;
-  --bg-input: #1d3752;
+  --bg-base: #f0f4f8;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ebf4ff;
+  --bg-input: #f5f9ff;
+  --bg-accent-soft: #ebf4ff;
 
   /* 文字 */
-  --text-primary: #f0f4f8;
-  --text-secondary: #50bfc3;
-  --text-muted: #7aa3be;
+  --text-primary: #1e3a5f;
+  --text-secondary: #4a7fa5;
+  --text-muted: #8aaec8;
 
   /* Accent */
-  --accent: #f7c232;
-  --accent-dim: #c99a20;
-  --accent-glow: rgba(247, 194, 50, 0.12);
+  --accent: #4a90d9;
+  --accent-dim: #357abd;
+  --accent-glow: rgba(74, 144, 217, 0.12);
+  --accent-teal: #50bfc3;
 
   /* 邊框 */
-  --border: rgba(80, 191, 195, 0.2);
-  --border-strong: rgba(247, 194, 50, 0.5);
+  --border: #d6e8f5;
+  --border-strong: #4a90d9;
 
   /* 狀態色 */
-  --required: #f7c232;
-  --optional: #50bfc3;
-  --highlight-node: rgba(247, 194, 50, 0.15);
+  --required: #e85d5d;
+  --optional: #4a90d9;
+  --highlight-node: rgba(74, 144, 217, 0.15);
+
+  /* 陰影 */
+  --shadow-sm: 0 1px 3px rgba(74, 144, 217, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(74, 144, 217, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(74, 144, 217, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
@@ -38,10 +45,9 @@
   --color-bg-input: var(--bg-input);
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
+  --color-accent-teal: var(--accent-teal);
   --color-text-warm: var(--text-primary);
   --color-text-muted-green: var(--text-secondary);
-  --color-teal: #50bfc3;
-  --color-mid-blue: #2c7695;
 }
 
 body {

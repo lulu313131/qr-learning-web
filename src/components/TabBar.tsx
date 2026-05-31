@@ -23,11 +23,16 @@ export default function TabBar({
             key={tab.id}
             type="button"
             onClick={() => onTabChange(tab.id)}
-            className={`rounded-t-lg border px-5 py-2 text-base transition-all duration-150 ease-in-out hover:scale-[1.01] ${
+            className={`rounded-t-[10px] border px-5 py-2.5 text-[15px] transition-all duration-150 ease-in-out ${
               selected
-                ? "border-[var(--border-strong)] border-b-[3px] border-b-[var(--accent)] bg-[var(--bg-card)] font-semibold text-[var(--accent)]"
-                : "border-[var(--border)] bg-transparent text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--text-primary)]"
+                ? "border-[var(--accent)] bg-[var(--accent)] font-semibold text-white"
+                : "border-[var(--border)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--accent)]"
             }`}
+            style={
+              selected
+                ? { boxShadow: "var(--shadow-md)" }
+                : { boxShadow: "var(--shadow-sm)" }
+            }
           >
             {tab.label}
           </button>

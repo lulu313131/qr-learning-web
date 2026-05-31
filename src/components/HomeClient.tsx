@@ -159,14 +159,17 @@ export default function HomeClient({
       />
 
       <div className="flex min-h-screen flex-1 flex-col">
-        <header className="flex h-14 items-center border-b border-[var(--border)] bg-[var(--bg-surface)] px-6">
+        <header
+          className="flex h-14 items-center border-b border-[var(--border)] bg-[var(--bg-surface)] px-6"
+          style={{ boxShadow: "var(--shadow-sm)" }}
+        >
           <div className="flex w-full items-center">
             <div className="flex shrink-0 items-center gap-3">
               <span
-                className="h-7 w-1 rounded-sm bg-[var(--accent)]"
+                className="h-7 w-1 rounded-[2px] bg-[var(--accent)]"
                 aria-hidden
               />
-              <h1 className="text-[26px] font-bold text-[var(--accent)]">
+              <h1 className="text-2xl font-bold text-[var(--accent)]">
                 部門學習網
               </h1>
             </div>
@@ -182,7 +185,7 @@ export default function HomeClient({
             onTabChange={handleTabChange}
           />
 
-          <div className="min-h-[calc(100vh-56px-48px)] flex-1 overflow-y-auto px-10 py-8">
+          <div className="min-h-[calc(100vh-56px-48px)] flex-1 overflow-y-auto px-10 py-8 bg-[var(--bg-base)]">
             {renderMainContent()}
           </div>
         </main>

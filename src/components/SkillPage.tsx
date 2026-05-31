@@ -41,21 +41,32 @@ function CourseSection({
       style={{ borderLeft: `4px solid ${barColor}` }}
     >
       <span
-        className={`mb-4 inline-block rounded px-2.5 py-0.5 text-[15px] font-semibold ${labelClass}`}
+        className={`mb-4 inline-block rounded-md px-2.5 py-0.5 text-[13px] font-semibold ${labelClass}`}
       >
         {title}
       </span>
-      <ul className="space-y-3">
+      <ul className="space-y-2">
         {items.map((course) => {
           const selected = selectedCourse === course.courseName;
           return (
             <li
               key={course.courseName}
-              className={`rounded-lg px-3 py-3 transition-all duration-150 ease-in-out ${
+              className={`rounded-[10px] border px-4 py-3 transition-all duration-150 ease-in-out ${
                 selected
-                  ? "border-l-[3px] border-l-[var(--accent)] bg-[var(--accent-glow)]"
-                  : "border-l-[3px] border-l-transparent hover:bg-[var(--bg-card-hover)]"
+                  ? "border-[var(--accent)] bg-[var(--bg-accent-soft)]"
+                  : "border-[var(--border)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)]"
               }`}
+              style={{ boxShadow: selected ? "var(--shadow-sm)" : undefined }}
+              onMouseEnter={(e) => {
+                if (!selected) {
+                  e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!selected) {
+                  e.currentTarget.style.boxShadow = "none";
+                }
+              }}
             >
               <button
                 type="button"
@@ -69,7 +80,7 @@ function CourseSection({
                   href={course.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-flex text-sm text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                  className="mt-2 inline-flex text-[13px] text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
                 >
                   前往課程 →
                 </a>
@@ -133,7 +144,7 @@ export default function SkillPage({
   return (
     <div className="flex min-h-[480px] gap-0">
       <div className="w-1/2 shrink-0 border-r border-[var(--border)] pr-6">
-        <h2 className="border-b border-[var(--border)] pb-3 text-2xl font-bold text-[var(--text-primary)]">
+        <h2 className="border-b border-[var(--border)] pb-3 text-[22px] font-bold text-[var(--text-primary)]">
           {category} 課程列表
         </h2>
         <div className="mt-6 space-y-8">
@@ -147,8 +158,8 @@ export default function SkillPage({
           />
           <CourseSection
             title="選修"
-            labelClass="bg-[rgba(80,191,195,0.15)] text-[var(--optional)]"
-            barColor="var(--optional)"
+            labelClass="bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]"
+            barColor="var(--accent-teal)"
             items={electiveCourses}
             selectedCourse={selectedCourse}
             onSelect={setSelectedCourse}
@@ -171,7 +182,7 @@ export default function SkillPage({
             </div>
 
             <section>
-              <p className="mb-3 text-sm font-semibold text-[var(--text-secondary)]">
+              <p className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
                 課程：
               </p>
               <ul className="space-y-2">
@@ -191,7 +202,7 @@ export default function SkillPage({
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 text-sm text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
+                          className="shrink-0 text-[13px] text-[var(--accent)] transition-all duration-150 ease-in-out hover:underline"
                         >
                           前往課程 →
                         </a>
@@ -203,7 +214,7 @@ export default function SkillPage({
             </section>
 
             <section>
-              <p className="mb-3 text-sm font-semibold text-[var(--text-secondary)]">
+              <p className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
                 相關計畫：
               </p>
               <ul className="space-y-2">

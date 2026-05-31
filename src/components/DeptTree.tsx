@@ -167,14 +167,14 @@ function PlanCard({
 }) {
   return (
     <div
-      className={`absolute max-w-[400px] min-w-[280px] w-max rounded-[10px] border p-4 ${
+      className={`absolute max-w-[400px] min-w-[280px] w-max rounded-xl border p-4 ${
         highlighted
           ? "border-[var(--accent)] bg-[var(--highlight-node)]"
-          : "border-[var(--border)] bg-[var(--bg-card)]"
+          : "border-[var(--border)] bg-[var(--bg-accent-soft)]"
       }`}
-      style={{ left, top }}
+      style={{ left, top, boxShadow: "var(--shadow-md)" }}
     >
-      <h4 className="border-b border-[var(--border)] pb-3 text-base font-bold text-[var(--accent)]">
+      <h4 className="border-b border-[var(--border)] pb-3 text-[15px] font-bold text-[var(--accent)]">
         {emoji} {name} 的相關計畫
       </h4>
       <ul className="mt-3 space-y-2">
@@ -275,8 +275,8 @@ export default function DeptTree({
             <path
               key={`${d}-${index}`}
               d={d}
-              stroke="var(--accent-dim)"
-              strokeWidth={1.5}
+              stroke="#B8D4E8"
+              strokeWidth={2}
               fill="none"
             />
           ))}

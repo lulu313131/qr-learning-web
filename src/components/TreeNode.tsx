@@ -23,13 +23,13 @@ export default function TreeNode({
     <button
       type="button"
       onClick={hasChildren ? onToggle : undefined}
-      className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 rounded-[10px] px-[18px] py-2.5 transition-all duration-150 ease-in-out ${
+      className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 rounded-xl border px-5 py-2.5 transition-all duration-150 ease-in-out ${
         isHighlighted
-          ? "border border-[var(--accent)] bg-[var(--highlight-node)]"
-          : "border border-[var(--border)] bg-[var(--bg-card)]"
+          ? "border-[var(--accent)] bg-[var(--highlight-node)] shadow-[var(--shadow-md)]"
+          : "border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow-sm)]"
       } ${
         hasChildren
-          ? "cursor-pointer hover:scale-[1.01] hover:border-[var(--border-strong)] hover:bg-[var(--bg-card-hover)]"
+          ? "cursor-pointer hover:border-[var(--accent)]/50 hover:shadow-[var(--shadow-md)]"
           : "cursor-default"
       }`}
       style={{ left, top }}
@@ -37,7 +37,7 @@ export default function TreeNode({
       <span className="text-xl" aria-hidden>
         {emoji}
       </span>
-      <span className="truncate text-[17px] font-semibold text-[var(--text-primary)]">
+      <span className="truncate text-base font-semibold text-[var(--text-primary)]">
         {name}
       </span>
       {hasChildren && (

@@ -2,9 +2,9 @@ import type { SkillCategoryKey } from "./types";
 
 const CATEGORY_STYLES: Record<string, string> = {
   Q: "bg-[var(--accent-glow)] text-[var(--accent)]",
-  R: "bg-[rgba(80,191,195,0.15)] text-[var(--optional)]",
+  R: "bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]",
   A: "bg-[var(--accent-glow)] text-[var(--accent)]",
-  M: "bg-[rgba(80,191,195,0.15)] text-[var(--text-secondary)]",
+  M: "bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]",
 };
 
 export function getCategoryBadgeClass(category: string): string {

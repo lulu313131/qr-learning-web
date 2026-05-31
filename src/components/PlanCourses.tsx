@@ -37,7 +37,7 @@ export default function PlanCourses({
 
   return (
     <AccordionPanel open={isOpen} openDuration={200} closeDuration={150}>
-      <div className="mt-2 w-full rounded-md border border-[var(--border)] bg-[var(--bg-base)] px-3 py-2">
+      <div className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-2.5">
         {matchedCourses.length === 0 ? (
           <p className="py-2 text-center text-sm text-[var(--text-muted)]">
             尚無對應課程
@@ -82,18 +82,21 @@ export default function PlanCourses({
                     openDuration={200}
                     closeDuration={150}
                   >
-                    <div className="mt-2 space-y-2 rounded-md bg-[var(--bg-card)] px-3 py-2">
+                    <div
+                      className="mt-2 space-y-2 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-2.5"
+                      style={{ boxShadow: "var(--shadow-sm)" }}
+                    >
                       <div className="flex flex-wrap gap-2">
                         <span
-                          className={`rounded px-2 py-0.5 text-xs font-medium ${getCategoryBadgeClass(course.skillCategory)}`}
+                          className={`rounded-md px-2 py-0.5 text-xs font-medium ${getCategoryBadgeClass(course.skillCategory)}`}
                         >
                           {course.skillCategory}
                         </span>
                         <span
-                          className={`rounded px-2 py-0.5 text-xs font-medium ${
+                          className={`rounded-md px-2 py-0.5 text-xs font-medium ${
                             isRequired
                               ? "bg-[var(--accent-glow)] text-[var(--required)]"
-                              : "bg-[rgba(80,191,195,0.15)] text-[var(--optional)]"
+                              : "bg-[rgba(80,191,195,0.12)] text-[var(--optional)]"
                           }`}
                         >
                           {course.type}
