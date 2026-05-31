@@ -34,7 +34,7 @@ export default function SearchResults({
       <div className="mt-8 space-y-8">
         {hasCourses && (
           <section>
-            <h3 className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
+            <h3 className="mb-3 border-b border-[rgba(255,255,255,0.4)] pb-1.5 text-[15px] font-semibold text-[var(--color-text-secondary)]">
               相關課程
             </h3>
             <ul className="space-y-2">
@@ -68,7 +68,7 @@ export default function SearchResults({
 
         {hasPlans && (
           <section>
-            <h3 className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
+            <h3 className="mb-3 border-b border-[rgba(255,255,255,0.4)] pb-1.5 text-[15px] font-semibold text-[var(--color-text-secondary)]">
               相關計畫與人員
             </h3>
             <ul className="space-y-2">

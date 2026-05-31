@@ -29,7 +29,7 @@ export default function Sidebar({
       </div>
 
       <div className="flex flex-col gap-5">
-        <h2 className="text-[11px] font-medium tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
+        <h2 className="text-[15px] font-semibold tracking-[0.05em] text-[var(--color-text-secondary)]">
           技能大類
         </h2>
         <div className="flex flex-col gap-5">

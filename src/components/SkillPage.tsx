@@ -171,7 +171,7 @@ export default function SkillPage({
             </div>
 
             <section>
-              <p className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
+              <p className="mb-3 border-b border-[rgba(255,255,255,0.4)] pb-1.5 text-[15px] font-semibold text-[var(--color-text-secondary)]">
                 課程：
               </p>
               <ul className="space-y-2">
@@ -203,7 +203,7 @@ export default function SkillPage({
             </section>
 
             <section>
-              <p className="mb-3 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)] uppercase">
+              <p className="mb-3 border-b border-[rgba(255,255,255,0.4)] pb-1.5 text-[15px] font-semibold text-[var(--color-text-secondary)]">
                 相關計畫：
               </p>
               <ul className="space-y-2">
