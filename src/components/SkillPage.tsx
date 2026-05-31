@@ -3,6 +3,10 @@
 import { useMemo, useState } from "react";
 
 import {
+  BADGE_OPTIONAL_CLASS,
+  BADGE_REQUIRED_CLASS,
+} from "@/lib/categoryStyles";
+import {
   getFirstKeyword,
   getMappingForCourse,
   getPeopleByPlan,
@@ -41,7 +45,7 @@ function CourseSection({
       style={{ borderLeft: `4px solid ${barColor}` }}
     >
       <span
-        className={`mb-4 inline-block rounded-md px-2.5 py-0.5 text-[13px] font-semibold ${labelClass}`}
+        className={`mb-4 inline-block px-2.5 py-0.5 text-[13px] font-semibold ${labelClass}`}
       >
         {title}
       </span>
@@ -51,22 +55,9 @@ function CourseSection({
           return (
             <li
               key={course.courseName}
-              className={`rounded-[10px] border px-4 py-3 transition-all duration-150 ease-in-out ${
-                selected
-                  ? "border-[var(--accent)] bg-[var(--bg-accent-soft)]"
-                  : "border-[var(--border)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)]"
+              className={`glass-card rounded-[10px] px-4 py-3 transition-all duration-150 ease-in-out ${
+                selected ? "border-[#4A90D9] !bg-[rgba(235,244,255,0.95)]" : ""
               }`}
-              style={{ boxShadow: selected ? "var(--shadow-sm)" : undefined }}
-              onMouseEnter={(e) => {
-                if (!selected) {
-                  e.currentTarget.style.boxShadow = "var(--shadow-sm)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!selected) {
-                  e.currentTarget.style.boxShadow = "none";
-                }
-              }}
             >
               <button
                 type="button"
@@ -142,24 +133,24 @@ export default function SkillPage({
   }, [selectedCourse, mappings, deptData]);
 
   return (
-    <div className="flex min-h-[480px] gap-0">
-      <div className="w-1/2 shrink-0 border-r border-[var(--border)] pr-6">
-        <h2 className="border-b border-[var(--border)] pb-3 text-[22px] font-bold text-[var(--text-primary)]">
+    <div className="glass-card flex min-h-[480px] gap-0 p-6">
+      <div className="w-1/2 shrink-0 border-r border-[rgba(180,210,240,0.4)] pr-6">
+        <h2 className="border-b border-[rgba(180,210,240,0.4)] pb-3 text-[22px] font-bold text-[var(--text-primary)]">
           {category} 課程列表
         </h2>
         <div className="mt-6 space-y-8">
           <CourseSection
             title="必修"
-            labelClass="bg-[var(--accent-glow)] text-[var(--accent)]"
-            barColor="var(--accent)"
+            labelClass={BADGE_REQUIRED_CLASS}
+            barColor="#4A90D9"
             items={requiredCourses}
             selectedCourse={selectedCourse}
             onSelect={setSelectedCourse}
           />
           <CourseSection
             title="選修"
-            labelClass="bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]"
-            barColor="var(--accent-teal)"
+            labelClass={BADGE_OPTIONAL_CLASS}
+            barColor="#2C9EA3"
             items={electiveCourses}
             selectedCourse={selectedCourse}
             onSelect={setSelectedCourse}
@@ -178,11 +169,11 @@ export default function SkillPage({
               <h3 className="text-[48px] font-bold text-[var(--accent)]">
                 {relatedInfo.keyword}
               </h3>
-              <div className="mt-3 border-b border-[var(--border)]" />
+              <div className="mt-3 border-b border-[rgba(180,210,240,0.4)]" />
             </div>
 
             <section>
-              <p className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+              <p className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
                 課程：
               </p>
               <ul className="space-y-2">
@@ -214,7 +205,7 @@ export default function SkillPage({
             </section>
 
             <section>
-              <p className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+              <p className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
                 相關計畫：
               </p>
               <ul className="space-y-2">

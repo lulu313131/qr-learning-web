@@ -25,14 +25,20 @@ export default function TreeNode({
       onClick={hasChildren ? onToggle : undefined}
       className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 rounded-xl border px-5 py-2.5 transition-all duration-150 ease-in-out ${
         isHighlighted
-          ? "border-[var(--accent)] bg-[var(--highlight-node)] shadow-[var(--shadow-md)]"
-          : "border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow-sm)]"
+          ? "border-[var(--accent)] bg-[var(--highlight-node)]"
+          : "border-[#C8DDEF] bg-[rgba(255,255,255,0.9)]"
       } ${
         hasChildren
-          ? "cursor-pointer hover:border-[var(--accent)]/50 hover:shadow-[var(--shadow-md)]"
+          ? "cursor-pointer hover:border-[#4A90D9] hover:shadow-[var(--shadow-node-hover)]"
           : "cursor-default"
       }`}
-      style={{ left, top }}
+      style={{
+        left,
+        top,
+        boxShadow: isHighlighted
+          ? "var(--shadow-node-hover)"
+          : "var(--shadow-node)",
+      }}
     >
       <span className="text-xl" aria-hidden>
         {emoji}

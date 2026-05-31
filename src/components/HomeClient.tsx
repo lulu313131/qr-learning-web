@@ -152,17 +152,14 @@ export default function HomeClient({
   };
 
   return (
-    <div className="flex min-h-screen bg-[var(--bg-base)]">
+    <div className="flex min-h-screen bg-transparent">
       <Sidebar
         activeCategory={activeSkill}
         onCategoryClick={handleCategoryClick}
       />
 
       <div className="flex min-h-screen flex-1 flex-col">
-        <header
-          className="flex h-14 items-center border-b border-[var(--border)] bg-[var(--bg-surface)] px-6"
-          style={{ boxShadow: "var(--shadow-sm)" }}
-        >
+        <header className="glass-header flex h-14 items-center px-6">
           <div className="flex w-full items-center">
             <div className="flex shrink-0 items-center gap-3">
               <span
@@ -178,14 +175,14 @@ export default function HomeClient({
           </div>
         </header>
 
-        <main className="flex flex-1 flex-col overflow-hidden bg-[var(--bg-base)]">
+        <main className="flex flex-1 flex-col overflow-hidden bg-transparent">
           <TabBar
             activeTab={activeTab}
             highlightTab={activeSkill === null && searchMode === null}
             onTabChange={handleTabChange}
           />
 
-          <div className="min-h-[calc(100vh-56px-48px)] flex-1 overflow-y-auto px-10 py-8 bg-[var(--bg-base)]">
+          <div className="min-h-[calc(100vh-56px-48px)] flex-1 overflow-y-auto bg-transparent px-10 py-8">
             {renderMainContent()}
           </div>
         </main>

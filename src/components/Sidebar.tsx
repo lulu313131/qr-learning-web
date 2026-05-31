@@ -16,11 +16,14 @@ export default function Sidebar({
   const categories: SkillCategoryKey[] = ["Q", "R", "A", "M"];
 
   return (
-    <aside
-      className="flex w-[220px] shrink-0 flex-col border-r border-[var(--border)] bg-[var(--bg-surface)]"
-      style={{ boxShadow: "2px 0 8px rgba(74,144,217,0.06)" }}
-    >
-      <div className="m-4 rounded-2xl bg-[var(--bg-accent-soft)] p-3">
+    <aside className="glass-sidebar flex w-[220px] shrink-0 flex-col">
+      <div
+        className="m-4 rounded-2xl p-3"
+        style={{
+          background: "rgba(235,244,255,0.7)",
+          backdropFilter: "blur(6px)",
+        }}
+      >
         <Image
           src="/mascot.jpg"
           alt="Q兔吉祥物"
@@ -43,12 +46,16 @@ export default function Sidebar({
                 key={cat}
                 type="button"
                 onClick={() => onCategoryClick(cat)}
-                className={`mx-4 my-1 h-11 w-[calc(100%-32px)] rounded-xl border text-base transition-all duration-150 ease-in-out ${
+                className={`mx-4 my-1 h-11 w-[calc(100%-32px)] rounded-[10px] border text-base transition-all duration-150 ease-in-out ${
                   selected
-                    ? "border-[var(--accent)] bg-[var(--accent)] font-bold text-white"
-                    : "border-[var(--border)] bg-[var(--bg-accent-soft)] font-semibold text-[var(--text-secondary)] hover:border-[var(--accent)] hover:bg-[#D6EEFF] hover:text-[var(--accent)]"
+                    ? "border-[#4A90D9] bg-[#4A90D9] font-bold text-white"
+                    : "border-[#C8DDEF] bg-white font-semibold text-[#4A7FA5] hover:bg-[#EBF4FF]"
                 }`}
-                style={selected ? { boxShadow: "var(--shadow-sm)" } : undefined}
+                style={
+                  selected
+                    ? { boxShadow: "var(--shadow-btn-selected)" }
+                    : undefined
+                }
               >
                 {cat}
               </button>

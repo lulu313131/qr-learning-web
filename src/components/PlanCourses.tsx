@@ -2,7 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { getCategoryBadgeClass } from "@/lib/categoryStyles";
+import {
+  BADGE_OPTIONAL_CLASS,
+  BADGE_REQUIRED_CLASS,
+  getCategoryBadgeClass,
+} from "@/lib/categoryStyles";
 import { resolveCoursesForPlan } from "@/lib/planUtils";
 import type { Course, SkillMapping } from "@/lib/types";
 
@@ -37,13 +41,13 @@ export default function PlanCourses({
 
   return (
     <AccordionPanel open={isOpen} openDuration={200} closeDuration={150}>
-      <div className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-2.5">
+      <div className="glass-card mt-2 w-full rounded-lg px-3.5 py-2.5">
         {matchedCourses.length === 0 ? (
           <p className="py-2 text-center text-sm text-[var(--text-muted)]">
             尚無對應課程
           </p>
         ) : (
-          <ul className="divide-y divide-[var(--border)]">
+          <ul className="divide-y divide-[rgba(180,210,240,0.4)]">
             {matchedCourses.map((course) => {
               const detailOpen = openCourseName === course.courseName;
               const isRequired = course.type === "必修";
@@ -82,22 +86,17 @@ export default function PlanCourses({
                     openDuration={200}
                     closeDuration={150}
                   >
-                    <div
-                      className="mt-2 space-y-2 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] px-3.5 py-2.5"
-                      style={{ boxShadow: "var(--shadow-sm)" }}
-                    >
+                    <div className="glass-card mt-2 space-y-2 rounded-lg px-3.5 py-2.5">
                       <div className="flex flex-wrap gap-2">
-                        <span
-                          className={`rounded-md px-2 py-0.5 text-xs font-medium ${getCategoryBadgeClass(course.skillCategory)}`}
-                        >
+                        <span className={getCategoryBadgeClass(course.skillCategory)}>
                           {course.skillCategory}
                         </span>
                         <span
-                          className={`rounded-md px-2 py-0.5 text-xs font-medium ${
+                          className={
                             isRequired
-                              ? "bg-[var(--accent-glow)] text-[var(--required)]"
-                              : "bg-[rgba(80,191,195,0.12)] text-[var(--optional)]"
-                          }`}
+                              ? BADGE_REQUIRED_CLASS + " text-xs"
+                              : BADGE_OPTIONAL_CLASS + " text-xs"
+                          }
                         >
                           {course.type}
                         </span>

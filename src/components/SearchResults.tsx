@@ -26,10 +26,7 @@ export default function SearchResults({
   }
 
   return (
-    <div
-      className="rounded-2xl border border-[var(--border)] bg-[var(--bg-card)] px-10 py-8"
-      style={{ boxShadow: "var(--shadow-md)" }}
-    >
+    <div className="glass-card px-10 py-8">
       <h2 className="text-[26px] font-bold text-[var(--text-primary)]">
         「<span className="text-[var(--accent)]">{query}</span>」的搜尋結果
       </h2>
@@ -37,7 +34,7 @@ export default function SearchResults({
       <div className="mt-8 space-y-8">
         {hasCourses && (
           <section>
-            <h3 className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+            <h3 className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
               相關課程
             </h3>
             <ul className="space-y-2">
@@ -71,7 +68,7 @@ export default function SearchResults({
 
         {hasPlans && (
           <section>
-            <h3 className="mb-3 border-b border-[var(--border)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
+            <h3 className="mb-3 border-b border-[rgba(180,210,240,0.4)] pb-1.5 text-xs font-semibold tracking-[0.1em] text-[var(--text-muted)] uppercase">
               相關計畫與人員
             </h3>
             <ul className="space-y-2">

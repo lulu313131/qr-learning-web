@@ -170,9 +170,9 @@ function PlanCard({
       className={`absolute max-w-[400px] min-w-[280px] w-max rounded-xl border p-4 ${
         highlighted
           ? "border-[var(--accent)] bg-[var(--highlight-node)]"
-          : "border-[var(--border)] bg-[var(--bg-accent-soft)]"
+          : "border-[#BDD9F5] bg-[rgba(235,244,255,0.9)]"
       }`}
-      style={{ left, top, boxShadow: "var(--shadow-md)" }}
+      style={{ left, top, boxShadow: "var(--shadow-card)" }}
     >
       <h4 className="border-b border-[var(--border)] pb-3 text-[15px] font-bold text-[var(--accent)]">
         {emoji} {name} 的相關計畫
@@ -260,7 +260,7 @@ export default function DeptTree({
   );
 
   return (
-    <div className="overflow-x-auto bg-[var(--bg-base)] py-4">
+    <div className="overflow-x-auto bg-transparent py-4">
       <div
         className="relative mx-auto"
         style={{ width: CONTAINER_WIDTH, height: containerHeight }}

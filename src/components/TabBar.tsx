@@ -15,7 +15,7 @@ export default function TabBar({
   onTabChange,
 }: TabBarProps) {
   return (
-    <nav className="flex flex-wrap gap-1 border-b border-[var(--border)] bg-[var(--bg-base)] px-6 pt-4">
+    <nav className="flex flex-wrap gap-1 border-b border-[rgba(180,210,240,0.4)] bg-transparent px-6 pt-4">
       {TABS.map((tab) => {
         const selected = highlightTab && activeTab === tab.id;
         return (
@@ -25,13 +25,13 @@ export default function TabBar({
             onClick={() => onTabChange(tab.id)}
             className={`rounded-t-[10px] border px-5 py-2.5 text-[15px] transition-all duration-150 ease-in-out ${
               selected
-                ? "border-[var(--accent)] bg-[var(--accent)] font-semibold text-white"
-                : "border-[var(--border)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:text-[var(--accent)]"
+                ? "border-[#4A90D9] bg-[#4A90D9] font-semibold text-white"
+                : "border-[#C8DDEF] bg-[rgba(255,255,255,0.75)] text-[var(--text-secondary)] hover:bg-[#EBF4FF] hover:text-[var(--accent)]"
             }`}
             style={
               selected
-                ? { boxShadow: "var(--shadow-md)" }
-                : { boxShadow: "var(--shadow-sm)" }
+                ? { boxShadow: "var(--shadow-tab-selected)" }
+                : { boxShadow: "0 1px 4px rgba(100,160,220,0.1)" }
             }
           >
             {tab.label}

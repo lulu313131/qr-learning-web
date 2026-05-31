@@ -1,15 +1,21 @@
 import type { SkillCategoryKey } from "./types";
 
 const CATEGORY_STYLES: Record<string, string> = {
-  Q: "bg-[var(--accent-glow)] text-[var(--accent)]",
-  R: "bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]",
-  A: "bg-[var(--accent-glow)] text-[var(--accent)]",
-  M: "bg-[rgba(80,191,195,0.12)] text-[var(--accent-teal)]",
+  Q: "badge-required px-2 py-0.5 text-xs font-medium",
+  R: "badge-optional px-2 py-0.5 text-xs font-medium",
+  A: "badge-required px-2 py-0.5 text-xs font-medium",
+  M: "badge-optional px-2 py-0.5 text-xs font-medium",
 };
 
 export function getCategoryBadgeClass(category: string): string {
   return (
     CATEGORY_STYLES[category as SkillCategoryKey] ??
-    "bg-[var(--accent-glow)] text-[var(--text-secondary)]"
+    "badge-required px-2 py-0.5 text-xs font-medium"
   );
 }
+
+export const BADGE_REQUIRED_CLASS =
+  "badge-required px-2.5 py-0.5 text-[13px] font-semibold";
+
+export const BADGE_OPTIONAL_CLASS =
+  "badge-optional px-2.5 py-0.5 text-[13px] font-semibold";
