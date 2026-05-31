@@ -3,18 +3,19 @@ import Image from "next/image";
 export default function BossExpectations() {
   return (
     <div className="flex h-full min-h-[360px] w-full flex-row items-stretch gap-6">
-      <div className="relative w-1/2 shrink-0 self-stretch overflow-hidden rounded-[20px]">
+      <div className="flex w-1/2 shrink-0 items-center justify-center self-stretch p-6">
         <Image
           src="/team-photo.jpg"
           alt="團隊照片"
           width={600}
           height={400}
-          className="block h-full w-full rounded-[20px] object-cover"
+          className="block w-[70%] rounded-[20px] object-cover"
           style={{
-            width: "100%",
-            height: "100%",
+            width: "70%",
+            height: "auto",
             objectFit: "cover",
             borderRadius: "20px",
+            display: "block",
           }}
         />
       </div>
