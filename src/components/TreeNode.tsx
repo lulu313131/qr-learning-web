@@ -1,32 +1,33 @@
+import { forwardRef } from "react";
+
 type TreeNodeProps = {
   emoji: string;
   name: string;
-  left: number;
-  top: number;
   hasChildren: boolean;
   expanded: boolean;
   isHighlighted?: boolean;
   onToggle: () => void;
 };
 
-export default function TreeNode({
-  emoji,
-  name,
-  left,
-  top,
-  hasChildren,
-  expanded,
-  isHighlighted = false,
-  onToggle,
-}: TreeNodeProps) {
+const TreeNode = forwardRef<HTMLButtonElement, TreeNodeProps>(function TreeNode(
+  {
+    emoji,
+    name,
+    hasChildren,
+    expanded,
+    isHighlighted = false,
+    onToggle,
+  },
+  ref
+) {
   return (
     <button
+      ref={ref}
       type="button"
       onClick={hasChildren ? onToggle : undefined}
-      className={`absolute flex w-[140px] items-center justify-center gap-2 ${
+      className={`flex w-[140px] shrink-0 items-center justify-center gap-2 ${
         isHighlighted ? "glass-node-highlight" : "glass-node"
       } ${hasChildren ? "cursor-pointer" : "cursor-default"}`}
-      style={{ left, top }}
     >
       <span className="text-xl" aria-hidden>
         {emoji}
@@ -44,4 +45,6 @@ export default function TreeNode({
       )}
     </button>
   );
-}
+});
+
+export default TreeNode;
