@@ -16,7 +16,7 @@ export default function VisitCounter() {
   if (count === null) return null;
 
   return (
-    <span className="shrink-0 text-[13px] whitespace-nowrap text-[var(--color-text-main)]">
+    <span className="visit-capsule shrink-0 whitespace-nowrap">
       人次：{count.toLocaleString()}
     </span>
   );

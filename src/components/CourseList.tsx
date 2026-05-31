@@ -23,7 +23,7 @@ export default function CourseList({ category, courses }: CourseListProps) {
           return (
             <article
               key={`${course.skillCategory}-${course.courseName}`}
-              className="glass-card transition-interactive flex flex-col p-5 hover:bg-[rgba(255,255,255,0.85)]"
+              className="glass-card-inner transition-interactive flex flex-col p-5 hover:bg-[rgba(255,255,255,0.8)]"
             >
               <h3 className="mb-3 text-base font-medium text-[var(--color-text-main)]">
                 {course.courseName}

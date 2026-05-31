@@ -41,7 +41,7 @@ export default function PlanCourses({
 
   return (
     <AccordionPanel open={isOpen} openDuration={200} closeDuration={150}>
-      <div className="glass-card mt-2 w-full px-3.5 py-2.5">
+      <div className="glass-card-inner mt-2 w-full px-3.5 py-2.5">
         {matchedCourses.length === 0 ? (
           <p className="py-2 text-center text-sm text-[var(--color-text-secondary)]">
             尚無對應課程
@@ -86,7 +86,7 @@ export default function PlanCourses({
                     openDuration={200}
                     closeDuration={150}
                   >
-                    <div className="glass-card mt-2 space-y-2 px-3.5 py-2.5">
+                    <div className="glass-card-inner mt-2 space-y-2 px-3.5 py-2.5">
                       <div className="flex flex-wrap gap-2">
                         <span className={getCategoryBadgeClass(course.skillCategory)}>
                           {course.skillCategory}

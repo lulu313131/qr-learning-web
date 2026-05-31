@@ -152,34 +152,32 @@ export default function HomeClient({
   };
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar
-        activeCategory={activeSkill}
-        onCategoryClick={handleCategoryClick}
-      />
+    <div className="app-container">
+      <header className="glass-card glass-card-header flex h-[70px] items-center gap-6 px-8">
+        <h1 className="shrink-0 text-[22px] font-semibold text-[var(--color-text-main)]">
+          部門學習網
+        </h1>
+        <SearchBar onSearch={handleSearch} onClear={handleSearchClear} />
+        <VisitCounter />
+      </header>
 
-      <div className="flex min-h-screen flex-1 flex-col">
-        <header className="glass-header flex h-[70px] items-center px-8">
-          <div className="flex w-full items-center gap-6">
-            <h1 className="shrink-0 text-[22px] font-semibold tracking-[-0.01em] text-[var(--color-text-main)]">
-              部門學習網
-            </h1>
-            <SearchBar onSearch={handleSearch} onClear={handleSearchClear} />
-            <VisitCounter />
-          </div>
-        </header>
+      <div className="main-row">
+        <Sidebar
+          activeCategory={activeSkill}
+          onCategoryClick={handleCategoryClick}
+        />
 
-        <main className="flex flex-1 flex-col overflow-hidden">
+        <div className="right-panel">
           <TabBar
             activeTab={activeTab}
             highlightTab={activeSkill === null && searchMode === null}
             onTabChange={handleTabChange}
           />
 
-          <div className="min-h-[calc(100vh-70px-64px)] flex-1 overflow-y-auto">
-            <div className="content-panel mx-6 mb-6">{renderMainContent()}</div>
+          <div className="main-content-panel glass-card">
+            {renderMainContent()}
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );

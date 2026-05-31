@@ -50,7 +50,7 @@ export default function SearchBar({ onSearch, onClear }: SearchBarProps) {
           if (e.key === "Enter") handleSearch();
         }}
         placeholder="搜尋人名或關鍵字..."
-        className="transition-interactive h-10 w-full rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.6)] bg-[rgba(255,255,255,0.8)] py-0 pr-9 pl-[38px] text-base text-[var(--color-text-main)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-primary)] focus:shadow-[var(--shadow-focus)] focus:outline-none"
+        className="transition-interactive h-10 w-full rounded-[var(--radius-md)] border border-[rgba(255,255,255,0.8)] bg-[rgba(255,255,255,0.6)] py-0 pr-9 pl-[38px] text-base text-[var(--color-text-main)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-primary)] focus:shadow-[var(--shadow-focus)] focus:outline-none"
       />
 
       {value && (

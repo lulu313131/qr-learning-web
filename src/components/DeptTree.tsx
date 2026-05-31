@@ -258,7 +258,7 @@ export default function DeptTree({
   );
 
   return (
-    <div className="overflow-x-auto bg-transparent py-4">
+    <div className="flex w-full justify-center overflow-x-auto py-4">
       <div
         className="relative mx-auto"
         style={{ width: CONTAINER_WIDTH, height: containerHeight }}
@@ -273,7 +273,7 @@ export default function DeptTree({
             <path
               key={`${d}-${index}`}
               d={d}
-              stroke="rgba(0,118,203,0.25)"
+              stroke="rgba(0,118,203,0.2)"
               strokeWidth={1.5}
               fill="none"
             />

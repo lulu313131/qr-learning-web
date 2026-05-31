@@ -23,7 +23,7 @@ export default function TreeNode({
     <button
       type="button"
       onClick={hasChildren ? onToggle : undefined}
-      className={`absolute flex h-12 w-[140px] items-center justify-center gap-2 px-5 py-2.5 ${
+      className={`absolute flex w-[140px] items-center justify-center gap-2 ${
         isHighlighted ? "glass-node-highlight" : "glass-node"
       } ${hasChildren ? "cursor-pointer" : "cursor-default"}`}
       style={{ left, top }}
