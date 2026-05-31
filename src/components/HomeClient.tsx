@@ -84,6 +84,27 @@ export default function HomeClient({
     setHighlightName(null);
   };
 
+  const mobilePageTitle = useMemo(() => {
+    if (searchMode === "keyword" && keywordResult) {
+      return "搜尋結果";
+    }
+    if (activeSkill) {
+      return `${activeSkill} 技能課程`;
+    }
+    switch (activeTab) {
+      case "boss":
+        return "老闆期待";
+      case "dept-a":
+        return "A部門架構圖";
+      case "dept-b":
+        return "B部門架構圖";
+      case "dept-c":
+        return "C部門架構圖";
+      default:
+        return "";
+    }
+  }, [searchMode, keywordResult, activeSkill, activeTab]);
+
   const renderMainContent = () => {
     if (searchMode === "keyword" && keywordResult) {
       return (
@@ -232,6 +253,11 @@ export default function HomeClient({
           />
 
           <div className="main-content-panel glass-card mb-4 rounded-2xl p-5 md:mb-0 md:rounded-3xl md:p-10">
+            {mobilePageTitle && (
+              <h2 className="mb-4 block border-b border-[rgba(0,118,203,0.15)] pb-3 text-lg font-bold text-[#0076CB] md:hidden">
+                {mobilePageTitle}
+              </h2>
+            )}
             {renderMainContent()}
           </div>
         </div>
